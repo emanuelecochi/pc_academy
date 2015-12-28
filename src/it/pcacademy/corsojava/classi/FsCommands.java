@@ -38,7 +38,7 @@ public class FsCommands {
 				startCommand = command.substring(0,command.indexOf(' '));
 				// prendo la seconda parte, ossia il path
 				pathString = command.substring(command.indexOf(' ')+1, command.length());
-				// sostituisco tutti \ con doppio \\ perchè con uno solo la
+				// sostituisco tutti \ con doppio \\ perchÃ¨ con uno solo la
 				// stringa da errore in quanto si aspetta un carattere speciale
 				if (pathString.contains("\\")) {
 					pathString = pathString.replace("\\", "\\\\");
@@ -55,8 +55,8 @@ public class FsCommands {
 				System.out.println("COUNT - il comando count conta gli elementi all'interno di una certa directory");
 				System.out.println("DIR - il comando mostra i nomi di tutti i file all'interno di una certa directory");
 				System.out.println("RM - il comando cancella file o cartelle in una directory");
-				System.out.println("MKDIRS - il comando è utile per creare una nuova directory in un certo path");
-				System.out.println("WGET - il comando è utile per leggere da una sorgete remota, per effettuare il download da una URL");
+				System.out.println("MKDIRS - il comando Ã¨ utile per creare una nuova directory in un certo path");
+				System.out.println("WGET - il comando Ã¨ utile per leggere da una sorgete remota, per effettuare il download da una URL");
 				System.out.println();
 				break;
 			case "cd":
@@ -145,7 +145,7 @@ public class FsCommands {
 		}
 	}	
 }
-	 
+// 	 
 /*
  * System.out.format("toString: %s%n", path.toString()); System.out.format(
  * "getFileName: %s%n", path.getFileName()); System.out.format(
