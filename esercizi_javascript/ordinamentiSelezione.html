@@ -1,0 +1,158 @@
+<meta charset = "utf-8">  
+<script>
+
+var number = [];   // Definisco la variabile number che conterrà l'array dei numeri
+var insert = 0;    // Definisco e inizializzo la variabile insert che servirà per popolare number
+var i = 0;         // Definisco e inizializzo la variabile i che servirà per contare quanti numeri sono stati inseriti
+
+// Blocco per l'inserimento dei dati
+while (insert != "F") {
+	insert = prompt("Inserisci numero " + (i+1) + " (per finire digitare F): ");     // Salvo in insert il valore digitato da tastiera
+		if (insert != "F"){                                                          // Se il valore inserito è != F allora lo aggiungo nell'array e incremento i
+			number.push(parseFloat(insert)); 
+			i++;
+		} 
+}
+
+console.log("Sono stati inseriti",i,"numeri");																			// Stampo quanti numeri sono stati inseriti
+console.log("L'array di numeri è: ",number);              																// Stampo l'array di numeri
+console.log("L'array ordinato in modo crescente è:",sort(number));		        										// Calcolo e stampo l'array ordinato in modo crescente  		    
+console.log("L'array ordinato in modo decrescente senza duplicati è:",sortDistinct(number));    						// Calcolo e stampo l'array ordinato in modo decrescente  		    
+console.log("L'array shuffle è:",shuffle(number));																		// Calcolo e stampo l'array shuffle
+var min = prompt("Inserisci il minBound ");																				// Inserisco il valore min
+console.log("L'array min Bound è:",minBound(number,parseInt(min)));														// Calcolo la sotto-sequenza minBound
+var max = prompt("Inserisci il maxBound ");																				// Inserisco il valore max
+console.log("L'array max Bound è:",maxBound(number,parseInt(max)));														// Calcolo la sotto-sequenza maxBound
+console.log("L'array range compreso tra i valori",min,"e",max,"è:",range(number,parseInt(min),parseInt(max)));			// Calcolo la sotto-sequenza range
+var min = prompt("Inserisci la posizione minima dell'array");															// Inserisco la posizione minima dell'array
+var max = prompt("Inserisci la posizione massima dell'array");															// Inserisco la posizione massima dell'array
+console.log("L'array slice tra la posizione",min,"e la posizione",max,"è:",slice(number,parseInt(min),parseInt(max)));	// Calcolo e stampo la sotto-sequenza slice
+
+// --- FUNZIONI ---
+
+// Definizione della funzione sort (dal minore al maggiore)
+function sort(arrayNumber) {
+	var change = true; // Variabile usata per tenere conto se ci sono state modifiche sull'array
+	var app = 0; // Variabile di appoggio per poter scambiare gli elementi nel caso non siano ordinati correttamente
+	var newArray = arrayNumber.slice(); // 	creo una copia dell'array di input per evitare di sovrascriverlo
+	while (change == true) { // Finchè ci sono modifiche seull'array controllo se l'array è ordinato
+		change = false;
+		for (i = 0; i < newArray.length-1; i++) { // Scansiono tutto l'array
+			if (newArray[i] > newArray[i+1]) { // Se l'elemento i-esimo è più grande del successivo allora inverto gli elementi e imposto la variabile change su true
+				app = newArray[i];
+				newArray[i] = newArray[i+1];
+				newArray[i+1] = app;
+				change = true; 
+			}
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione distinctNumber (elimina i duplicati)
+function distinctNumber(arrayNumber) {
+	var newArray = []; // Definisco un array che conterrà i valori senza duplicati             
+	var present = false; // Definisco una variabile booleana che servirà per controllare se il numero sotto esame è già stato letto
+	for (i = 0; i < arrayNumber.length; i++) { // Scansiono tutto l'array con la variabile i
+		for (j = 0; j < arrayNumber.length; j++) { // Fissato l'elemento i-esimo da controllare verifico se è presente negli altri elementi con la variabile j
+		present = false; // Ogni volta che passo all'elememto j-esimo successivo riporto present = false 
+			if (i != j ) { // Se l'elemento i-esimo è diverso da se stesso (elemento j-esimo) 
+				for (y = 0; y < newArray.length; y++) { // Se l'elemento duplicato è già stato letto allora present = true
+					if (arrayNumber[i] == newArray[y]) {
+						present = true;
+					}
+				}
+				if (!present) { // Se l'elemento non è stato mai letto lo aggiungo all'array 
+					newArray.push(arrayNumber[i]);
+				}
+			} 
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione sortDistinct (dal maggiore al minore)
+function sortDistinct(arrayNumber) {
+	var change = true; // Variabile usata per tenere conto se ci sono state modifiche sull'array
+	var app = 0; // Variabile di appoggio per poter scambiare gli elementi nel caso non siano ordinati correttamente
+	var newArray = []; // Array ordinato senza ripetizioni
+	newArray = distinctNumber(arrayNumber); // Elimino gli elementi duplicati
+	while (change == true) { // Finchè ci sono modifiche seull'array controllo se l'array è ordinato
+		change = false;
+		for (i = 0; i < newArray.length-1; i++) { // Scansiono tutto l'array
+			if (newArray[i] < newArray[i+1]) { // Se l'elemento i-esimo è più piccolo del successivo allora inverto gli elementi e imposto la variabile change su true
+				app = newArray[i];
+				newArray[i] = newArray[i+1];
+				newArray[i+1] = app;
+				change = true; 
+			}
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione shuffle
+function shuffle(arrayNumber) {
+	var newArray = [];  // creo l'array che conterrà gli elementi random
+	var countArray = []; // creo un array che conterra la posizione degli elementi già inseriti in newArray
+	var randomNumber = 0; // creo la variabile randomNumber che sarà usata per leggere in maniera random gli elementi nell'array di input
+	var present = false; // la variabile present ci dice se l'elemento nella posizione i-esima dell'array di input è gia stato letto
+	while (arrayNumber.length != countArray.length) { //  finchè non ho inserito nel nuovo array tutti gli elementi continuo con la loro lettura random
+		randomNumber = Math.round((arrayNumber.length-1)*Math.random()); // calcolo il valore random
+		present = false;
+		for ( i = 0; i < countArray.length; i++) { // se il valore è già stato letto definisco present = true mentre in caso contrario lo aggiungo a newArray
+			if (randomNumber == countArray[i]) {
+				present = true;
+			}
+		}
+		if (!present) {
+			countArray.push(randomNumber);
+			newArray.push(arrayNumber[randomNumber]);
+		}
+	}
+	return newArray // restituisco newArray
+}
+	
+// Definizione della funzione minBound	
+function minBound(arrayNumber, min) {
+	var newArray = [];  // 	creo l'array che conterrà la sotto-sequenza di numeri maggiori o uguali di un numero min fornito in input
+	for ( i = 0; i < arrayNumber.length; i++) {
+		if (arrayNumber[i] >= min) { // se il valore dell'array è maggiore o uguale di quello di input lo aggiungo a newArray
+			newArray.push(arrayNumber[i]);
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione maxBound	
+function maxBound(arrayNumber, max) {
+	var newArray = [];  // 	creo l'array che conterrà la sotto-sequenza di numeri minori o uguali di un numero max fornito in input
+	for ( i = 0; i < arrayNumber.length; i++) {
+		if (arrayNumber[i] <= max) { // se il valore dell'array è minore o uguale di quello di input lo aggiungo a newArray
+			newArray.push(arrayNumber[i]);
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione range	
+function range(arrayNumber, min ,max) {
+	var newArray = [];  // 	creo l'array che conterrà la sotto-sequenza di numeri compresi tra min e max
+	for ( i = 0; i < arrayNumber.length; i++) {
+		if (arrayNumber[i] <= max && arrayNumber[i] >= min ) { // se il valore dell'array è compreso tra min e max lo aggiungo a newArray
+			newArray.push(arrayNumber[i]);
+		}
+	}
+	return newArray;
+}
+
+// Definizione della funzione slice	
+function slice(arrayNumber, min ,max) {
+	var newArray = [];  // 	creo l'array che conterrà la sotto-sequenza di numeri compresi tra la posizione min e la posizione max
+	for ( i = min-1 ; i < max; i++) {
+			newArray.push(arrayNumber[i]); // aggiungo in newArray gli elementi presenti nelle posizioni richieste in input
+		}
+	return newArray;
+}
+
+</script>

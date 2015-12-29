@@ -1,0 +1,60 @@
+<meta charset = "utf-8">  
+<script>
+
+// Script per il calcolo del minimo,del massimo e della media di un array di numeri inseriti da tastiera
+
+var number = [];   // Definisco la variabile number che conterrà l'array dei numeri
+var insert = 0;    // Definisco e inizializzo la variabile insert che servirà per popolare number
+var i = 0;         // Definisco e inizializzo la variabile i che servirà per contare quanti numeri sono stati inseriti
+
+// Blocco per l'inserimento dei dati
+while (insert != "F") {
+	insert = prompt("Inserisci numero " + (i+1) + " (per finire digitare F): ");     // Salvo in insert il valore digitato da tastiera
+		if (insert != "F"){                                                          // Se il valore inserito è != F allora lo aggiungo nell'array e incremento i
+			number.push(parseInt(insert)); 
+			i++;
+		} 
+}
+
+console.log("Sono stati inseriti",i,"numeri");			  // Stampo quanti numeri sono stati inseriti
+console.log("L'array di numeri è: ",number);              // Stampo l'array di numeri
+console.log("Il numero minore è: ",minimum(number));      // Calcolo e stampo il minimo
+console.log("La numero maggiore è: ",maximum(number));    // Calcolo e stampo il massimo
+console.log("La media dei numeri è: ",average(number));   // Calcolo e stampo la media
+
+// --- FUNZIONI ---
+
+// Definizione della funzione minimo
+function minimum(arrayNumber) {
+	var min = arrayNumber[0]; // Considero come minimo il primo elemento dell'array
+		// Ciclo tutto l'array e confronto il min calcolato precedentemente con l'elemento successivo	
+		for (i = 0; i<arrayNumber.length-1; i++) {
+			if ( min > arrayNumber[i+1] ) { // Se il minimo calcolato precedentemente è più grande dell'elemento successivo allora il minimo è proprio l'elemento successivo 
+				min = arrayNumber[i+1];
+			} 
+		}
+	return min 
+}
+
+// Definizione della funzione massimo
+function maximum(arrayNumber) {
+	var max = arrayNumber[0]; // Considero come massimo il primo elemento dell'array
+		// Ciclo tutto l'array e confronto il max calcolato precedentemente con l'elemento successivo	
+		for (i = 0; i<arrayNumber.length-1; i++) {
+			if ( max < arrayNumber[i+1] ) { // Se il massimo calcolato precedentemente è più piccolo dell'elemento successivo allora il massimo è proprio l'elemento successivo 
+				max = arrayNumber[i+1]; 
+			} 
+		}
+	return max 
+}
+
+// Definizione della funzione media
+function average(arrayNumber) {
+	var sum = 0; // Considero la somma di tutti gli elementi dell'array uguale a 0
+	for (i = 0; i<arrayNumber.length; i++) {  
+		sum += arrayNumber[i]; // Sommo tutti gli elementi dell'array
+	}
+	return sum/arrayNumber.length // Calcolo la media
+}
+
+</script>

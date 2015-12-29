@@ -1,0 +1,29 @@
+<meta charset = "utf-8">  
+<script>
+// Trovare il minore tra due numeri
+// Trovare il maggiore o uguale tra due numeri
+
+var number1 = parseInt(prompt("Inserisci il primo numero"));      // Inserico il primo numero da tastiera in number1
+var number2 = parseInt(prompt("Inserisci il secondo numero"));	  // Inserico il secondo numero da tastiera in number2
+
+console.log("Il numero più piccolo è:",minimum(number1,number2));              // Stampo il numero più piccolo
+console.log("Il numero più grande o uguale è:",maxEqual(number1,number2));	   // Stampo il numero più grande o uguale
+
+// calcola il minimo tra 2 numeri
+function minimum(number1,number2) {
+	var min = number1; // Considero il primo numero come minimo
+	if (number1 > number2) { // Se il primo numero è più grande allora il minimo è il numero 2
+		min = number2;
+	}
+	return min; // Ritorno il minimo
+}
+
+// calcola il massimo o uguale tra 2 numeri
+function maxEqual(number1,number2) {
+	var maxEqual = number1; // Considero il primo numero come massimo o uguale
+	if (number1 < number2) { // Se il primo numero è più piccolo allora il massimo o uguale è il numero 2
+		maxEqual = number2;
+	}
+	return maxEqual; // Ritorno il massimo o uguale
+}
+</script>
