@@ -15,7 +15,7 @@ public class Dizionario {
 				// inizializzo la variabile dizionario di tipo Set con un Set vuoto
 				Set<String> dictionary = Collections.emptySet();
 				
-				// inizializzo la variabile index di tipo Map con un Map vuoto
+				// inizializzo la variabile index di tipo Map contenente oggetti di tipo HashMap<String, Integer>
 				Map<String, Integer> index = new HashMap<String, Integer>();
 				
 				// variabile usata per contare le occorrenze delle parole cercate
@@ -37,7 +37,7 @@ public class Dizionario {
 				// inzializzo la stringa initialCharacter
 				String initialCharacter = new String(); 
 				
-				// aggiorno indice in base alla lettera inserita da console
+				// aggiorno index in base alla lettera inserita da console
 				while (!initialCharacter.equals("END") && scanner.hasNext()) {
 
 					initialCharacter = scanner.nextLine();
