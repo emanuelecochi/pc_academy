@@ -20,7 +20,7 @@ public class IOStreamFile {
 //			 InputStream site = url.openStream();
 			
 			// File inFile non contiene i dati ma il percorso dove trovarli
-			File inFile = new File("text/text.txt");
+			File inFile = new File("file/words.txt");
 			// Per scrivere in un file:
 			// FileWriter writer = new FileWriter(inFile);
 			// BufferedReader buf = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));

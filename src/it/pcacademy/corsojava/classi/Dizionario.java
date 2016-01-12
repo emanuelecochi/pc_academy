@@ -24,7 +24,7 @@ public class Dizionario {
 				int i = 0;
 				
 				// dichiaro il riferimento al file che leggerò
-				File input = new File("text/words.italian.txt");
+				File input = new File("file/words.italian.txt");
 
 				try {
 					// leggo le righe dal file e le salvo in dictionary
