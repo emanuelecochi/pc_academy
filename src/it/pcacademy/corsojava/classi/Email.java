@@ -1,6 +1,6 @@
 package it.pcacademy.corsojava.classi;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 public class Email {
 

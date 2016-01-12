@@ -1,6 +1,6 @@
 
-import it.pcacademy.corsojava.classi.Book;
-import it.pcacademy.corsojava.classi.Author;;
+import it.pcacademy.corsojava.classi.Author;
+import it.pcacademy.corsojava.classi.Book;;
 public class MainBook {
 
 	public static void main(String[] args) {

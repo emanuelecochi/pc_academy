@@ -1,12 +1,14 @@
 package it.pcacademy.corsojava.classi;
 
-import it.pcacademy.corsojava.utilities.*;
 import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import it.pcacademy.corsojava.utilities.FileProblemException;
+import it.pcacademy.corsojava.utilities.FileUtilities;
 
 
 public class Dizionario {
