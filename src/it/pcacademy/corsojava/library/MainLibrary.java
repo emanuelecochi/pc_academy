@@ -25,16 +25,17 @@ public class MainLibrary {
 			line = buf.readLine();
 			
 			while (line != null) {
+				TreeMap<String, String> map = new TreeMap<String, String>();
 				for (int i = 0; i < titleItems.length; i++) {
-					TreeMap<String, String> map = new TreeMap<String, String>();
 					map.put(titleItems[i], infoArray.split(line, titleItems.length)[i]);
-					libraryArrayLazio.add(map);
+					if (i == titleItems.length-1)
+						libraryArrayLazio.add(map);
 				}
 				line = buf.readLine();
 			}
 			buf.close();
-			for (TreeMap<String, String> map : libraryArrayLazio) {
-				for (Entry<String,String> e: map.entrySet()) {
+			for (TreeMap<String, String> listLibrary : libraryArrayLazio) {
+				for (Entry<String,String> e: listLibrary.entrySet()) {
 					System.out.println(e.getKey() + ": " + e.getValue());
 				}
 			}
