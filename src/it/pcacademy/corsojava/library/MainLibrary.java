@@ -9,6 +9,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.Map.Entry;
 
 public class MainLibrary {
@@ -25,8 +27,6 @@ public class MainLibrary {
 			List<TreeMap<String, String>> libraryMapLazio = new ArrayList<TreeMap<String, String>>();
 			String line = buf.readLine();
 			String[] titleItems = line.replace('\"', ' ').split(",");
-			//System.out.println(titleItems.length);
-			//StringSplitLibrary infoArray = new StringSplitLibrary();
 			line = buf.readLine();
 
 			while (line != null) {
@@ -88,18 +88,33 @@ public class MainLibrary {
 				libraryList.add(library);
 			}
 			
-			PrintStream out = new PrintStream(new FileOutputStream(outputFile));
-			System.setOut(out);
+//			PrintStream out = new PrintStream(new FileOutputStream(outputFile));
+//			System.setOut(out);
 			
-			for (Library lib : libraryList) {
-				lib.printLibrary();
-				lib.getIndirizzo().printAdress();
-				lib.getPosizione().printLocation();
-				lib.getTelefono().printPhone();
-				lib.getEmail().printEmail();
+//			for (Library lib : libraryList) {
+//				lib.printLibrary();
+//				lib.getIndirizzo().printAdress();
+//				lib.getPosizione().printLocation();
+//				lib.getTelefono().printPhone();
+//				lib.getEmail().printEmail();
+//				System.out.println();
+//			}
+			
+			List<Library> libFilter = libraryList
+							  .stream()
+							  .filter(w-> w.getComune().equals("Roma") && 
+									  w.getIndirizzo().stringCAP(w.getIndirizzo().getCap()).equals("00187"))
+							  .collect(Collectors.toList());
+			
+			for (Library filter : libFilter) {
+				filter.printLibrary();
+				filter.getIndirizzo().printAdress();
+				filter.getPosizione().printLocation();
+				filter.getTelefono().printPhone();
+				filter.getEmail().printEmail();
 				System.out.println();
 			}
-
+			
 //			Location a = new Location("10", "5");
 //			Location b = new Location("10", "5");
 //			System.out.println(Location.distance(a, b));

@@ -9,8 +9,8 @@ public class IOStream {
 
 	public static void main(String[] args) {
 		try {
-			// System.in √® un InputStream, ha il metodo read() che purtroppo 
-			// legge un byte per volta, quindi si usa InputStreamReader che sar√† usato
+			// System.in Ë un InputStream, ha il metodo read() che purtroppo 
+			// legge un byte per volta, quindi si usa InputStreamReader che sar‡† usato
 			// da BufferReader
 			InputStreamReader isr = new InputStreamReader(System.in);
 			// BufferedRead permette di leggere le righe di testo (stringhe) ma vuole
