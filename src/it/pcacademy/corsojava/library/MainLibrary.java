@@ -2,7 +2,10 @@ package it.pcacademy.corsojava.library;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
@@ -15,12 +18,14 @@ public class MainLibrary {
 		try {
 			// File inFile non contiene i dati ma il percorso dove trovarli
 			File inputFile = new File("file/elencobibliotechelazio2014.csv");
+			File outputFile = new File("file/result.txt");
+			//FileWriter fileOut = new FileWriter(outputFile);
 			BufferedReader buf = new BufferedReader(new FileReader(inputFile));
 
 			List<TreeMap<String, String>> libraryMapLazio = new ArrayList<TreeMap<String, String>>();
 			String line = buf.readLine();
 			String[] titleItems = line.replace('\"', ' ').split(",");
-			System.out.println(titleItems.length);
+			//System.out.println(titleItems.length);
 			//StringSplitLibrary infoArray = new StringSplitLibrary();
 			line = buf.readLine();
 
@@ -71,11 +76,23 @@ public class MainLibrary {
 				email.setDomain(data.get("email").substring(data.get("email").indexOf("@")+1, data.get("email").length())); 
 				}
 				library.setEmail(email);
+				// Other info
+				library.setComune(data.get("comune"));
+				library.setProvincia(data.get("provincia"));
+				library.setDenominazione(data.get("denominazione"));
+				library.setTipologiaFunzionale(data.get("tipologia funzionale"));
+				library.setDenominazione(data.get("denominazione ente"));
+				library.setOBR(data.get("OBR"));
+				library.setSistemaBibliotecario(data.get("Sistema bibliotecario"));
 				
 				libraryList.add(library);
 			}
-
+			
+			PrintStream out = new PrintStream(new FileOutputStream(outputFile));
+			System.setOut(out);
+			
 			for (Library lib : libraryList) {
+				lib.printLibrary();
 				lib.getIndirizzo().printAdress();
 				lib.getPosizione().printLocation();
 				lib.getTelefono().printPhone();
@@ -83,6 +100,10 @@ public class MainLibrary {
 				System.out.println();
 			}
 
+//			Location a = new Location("10", "5");
+//			Location b = new Location("10", "5");
+//			System.out.println(Location.distance(a, b));
+			
 		} catch (Exception e) {
 			// stampa il messaggio di errore
 			e.printStackTrace();

@@ -2,8 +2,8 @@ package it.pcacademy.corsojava.library;
 
 public class Location {
 
-	private String latitudine;
-	private String longitudine;
+	private String latitudine = "";
+	private String longitudine = "";
 	
 	public Location(String latitudine, String longitudine) {
 		super();
@@ -28,5 +28,18 @@ public class Location {
 		System.out.print("Latitudine: " + this.getLatitudine() + " Longitudine: " + this.getLongitudine() + " ");
 	}
 	
+	public static double distance(Location A, Location B) {
+		double dis = -1;
+		if (!A.getLatitudine().equals("") && !A.getLongitudine().equals("")) {
+			if (!B.getLatitudine().equals("") && !B.getLongitudine().equals("")) {
+				double latA = Double.parseDouble(A.getLatitudine());
+				double lonA = Double.parseDouble(A.getLongitudine());
+				double latB = Double.parseDouble(B.getLatitudine());
+				double lonB = Double.parseDouble(B.getLongitudine());
+				dis = Math.sqrt((latA*latA+latB*latB)+(lonA*lonA+lonB*lonB));
+			}
+		}
+		return dis;
+	}
 	
 }

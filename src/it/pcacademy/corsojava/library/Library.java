@@ -4,12 +4,13 @@ import java.net.URL;
 
 public class Library {
 
-	private String comune;
-	private String provincia;
-	private String denominazione;
-	private String tipologiaFunzionale;
-	private String denominazioneEnte;
-	private String sistemaBibliotecario;
+	private String comune = "";
+	private String provincia = "";
+	private String denominazione = "";
+	private String tipologiaFunzionale = "";
+	private String denominazioneEnte = "";
+	private String sistemaBibliotecario = "";
+	private String OBR = "";
 	private Address indirizzo;
 	private Location posizione;
 	private Phone telefono;
@@ -17,6 +18,14 @@ public class Library {
 	private Email email;
 	private URL url;
 	
+	
+	
+	public String getOBR() {
+		return this.OBR;
+	}
+	public void setOBR(String oBR) {
+		this.OBR = oBR;
+	}
 	public String getComune() {
 		return this.comune;
 	}
@@ -91,4 +100,9 @@ public class Library {
 		this.url = url;
 	}
 	
+	public void printLibrary() {
+		System.out.print("Comune: " + this.getComune() + " Provincia: " + this.getProvincia() + " Denominazione: " + this.getDenominazione()
+						+ " Tipologia funzionale: " + this.getTipologiaFunzionale() + " Denominazione ente: " + this.getDenominazioneEnte()
+						+ " OBR: " + this.getOBR() + " Sistema bibliotecario: " + this.getSistemaBibliotecario() + " ");
+	}
 }
