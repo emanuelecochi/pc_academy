@@ -2,20 +2,30 @@ package it.pcacademy.corsojava.library;
 
 public class Phone {
 
-	private short[] prefix = new short[2];
-	private short[] number = new short[10];
+	private String prefix;
+	private String number;
 	
-	public short[] getPrefix() {
+	public Phone(String prefix, String number) {
+		super();
+		this.prefix = prefix;
+		this.number = number;
+	}
+	
+	public String getPrefix() {
 		return this.prefix;
 	}
-	public void setPrefix(short[] prefix) {
+	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
-	public short[] getNumber() {
+	public String getNumber() {
 		return this.number;
 	}
-	public void setNumber(short[] number) {
+	public void setNumber(String number) {
 		this.number = number;
+	}
+	
+	public void printPhone() {
+		System.out.print("Prefisso: " + this.getPrefix() + " Numero: " + this.getNumber() + " ");
 	}
 	
 }

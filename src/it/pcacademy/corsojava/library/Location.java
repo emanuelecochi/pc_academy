@@ -2,22 +2,31 @@ package it.pcacademy.corsojava.library;
 
 public class Location {
 
-	private double latitudine;
-	private double longitudine;
+	private String latitudine;
+	private String longitudine;
 	
-	public double getLatitudine() {
+	public Location(String latitudine, String longitudine) {
+		super();
+		this.latitudine = latitudine;
+		this.longitudine = longitudine;
+	}
+	public String getLatitudine() {
 		return this.latitudine;
 	}
-	public void setLatitudine(double latitudine) {
+	public void setLatitudine(String latitudine) {
 		this.latitudine = latitudine;
 	}
-	public double getLongitudine() {
+	public String getLongitudine() {
 		return this.longitudine;
 	}
-	public void setLongitudine(double longitudine) {
+	public void setLongitudine(String longitudine) {
 		this.longitudine = longitudine;
 	}
 	
+	public void printLocation() {
+		
+		System.out.print("Latitudine: " + this.getLatitudine() + " Longitudine: " + this.getLongitudine() + " ");
+	}
 	
 	
 }

@@ -2,7 +2,7 @@ package it.pcacademy.corsojava.library;
 
 public class StringSplitLibrary {
 	
-	public String[] split(String stringTextext, int numberItems) {
+	public static String[] split(String stringTextext, int numberItems) {
 		String[] dataArray = new String[numberItems];
 		String[] dataRawArray = stringTextext.split(",");
 		int numberQuotesItemRaw = 0;

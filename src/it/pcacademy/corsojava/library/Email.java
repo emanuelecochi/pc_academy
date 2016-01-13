@@ -25,5 +25,8 @@ public class Email {
 		this.domain = domain;
 	}
 
+	public void printEmail() {
+		System.out.print("Username: " + this.getUsername() + " Domain: " + this.getDomain() + " ");
+	}
 	
 }
