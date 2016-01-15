@@ -9,9 +9,11 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class MainLibrary {
 
@@ -103,7 +105,7 @@ public class MainLibrary {
 			List<Library> libFilter = libraryList
 							  .stream()
 							  .filter(w-> w.getComune().equals("Roma") && 
-									  w.getIndirizzo().stringCAP(w.getIndirizzo().getCap()).equals("00187"))
+									  w.getIndirizzo().stringCAP(w.getIndirizzo().getCap()).equals("00171"))
 							  .collect(Collectors.toList());
 			
 			for (Library filter : libFilter) {

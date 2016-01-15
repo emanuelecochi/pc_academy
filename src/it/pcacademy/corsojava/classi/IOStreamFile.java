@@ -19,12 +19,20 @@ public class IOStreamFile {
 //			 URL url = new URL("www.google.com");
 //			 InputStream site = url.openStream();
 			
-			// File inFile non contiene i dati ma il percorso dove trovarli
-			File inFile = new File("file/words.txt");
+			// File FileRead non contiene i dati ma il percorso dove trovarli, è un file 
+			// utilizzato per leggere il contenuto
+			File FileRead = new File("file/words.txt");
+			// File FileWrite non contiene i dati ma il percorso dove trovarli, è un file 
+			// utilizzato per scrivere del testo
+			File FileWrite = new File("file/hello.txt");
 			// Per scrivere in un file:
-			// FileWriter writer = new FileWriter(inFile);
-			// BufferedReader buf = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
-			BufferedReader buf = new BufferedReader(new FileReader(inFile));
+			FileWriter writer = new FileWriter(FileWrite);
+			writer.write("hello");
+			writer.flush();
+			 
+			// Per leggere un file 
+			// BufferedReader buf = new BufferedReader(new InputStreamReader(new FileInputStream(FileRead)));
+			BufferedReader buf = new BufferedReader(new FileReader(FileRead));
 			List<String> lines = new ArrayList<String>();
 			String line = buf.readLine();
 			while (line != null) {
